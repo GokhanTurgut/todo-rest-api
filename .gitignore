@@ -1,0 +1,8 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+ca-certificates.crt
+.env

@@ -1,0 +1,29 @@
+{
+  "name": "todo-api",
+  "version": "0.0.1",
+  "description": "Practice project to learn MySQL and TypeORM",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^8.0.29",
+    "nodemon": "^2.0.15",
+    "ts-node": "3.3.0",
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "mysql": "^2.14.1",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "0.2.41"
+  },
+  "scripts": {
+    "start": "ts-node src/app.ts",
+    "dev": "nodemon src/app.ts"
+  },
+  "author": "Gokhan Turgut",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GokhanTurgut/todo-api.git"
+  }
+}
