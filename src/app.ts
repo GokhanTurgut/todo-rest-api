@@ -1,18 +1,24 @@
 import "reflect-metadata";
 import express from "express";
 import { createConnection } from "typeorm";
+import dotenv from 'dotenv';
 
-import todoRoutes from './routes/todos';
+dotenv.config;
 
-const app = express();
+const PORT = Number(process.env.PORT) || 5000;
 
-app.use(express.json());
-
-app.use(todoRoutes);
-
+import todoRoutes from "./routes/todos";
+import authRoutes from "./routes/auth";
 
 createConnection().then(() => {
-  app.listen(5000, () => {
-    console.log('Server started on port 5000');
-  })
-})
+  const app = express();
+
+  app.use(express.json());
+
+  app.use(todoRoutes);
+  app.use(authRoutes);
+
+  app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+  });
+});
