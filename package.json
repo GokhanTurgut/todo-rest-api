@@ -1,6 +1,6 @@
 {
   "name": "todo-api",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Practice project to learn MySQL and TypeORM",
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -21,8 +21,10 @@
     "typeorm": "0.2.41"
   },
   "scripts": {
-    "start": "ts-node src/app.ts",
-    "dev": "nodemon src/app.ts"
+    "start": "node build/app.js",
+    "ts": "ts-node src/app.ts",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc"
   },
   "author": "Gokhan Turgut",
   "license": "MIT",
