@@ -25,10 +25,10 @@ Request Body:
 
 ```
 {
-    "email": "test@test.com", // Required must be unique and valid
-    "firstName": "John", // Required must be at least 2 characters
-    "lastName": "Doe", // Required must be at least 2 characters
-    "password": "test123" // Required must be at least 6 characters
+  "email": "test@test.com", // Required must be unique and valid
+  "firstName": "John", // Required must be at least 2 characters
+  "lastName": "Doe", // Required must be at least 2 characters
+  "password": "test123" // Required must be at least 6 characters
 }
 ```
 
@@ -36,13 +36,13 @@ Response:
 
 ```
 {
-	"message": "Save successful!",
-	"user": {
-		"id": 13,
-		"email": "test@test.com",
-		"firstName": "John",
-		"lastName": "Doe"
-	}
+  "message": "Save successful!",
+  "user": {
+    "id": 13,
+    "email": "test@test.com",
+    "firstName": "John",
+    "lastName": "Doe"
+  }
 }
 ```
 
@@ -52,8 +52,8 @@ Request Body:
 
 ```
 {
-    "email": "test@test.com", // Required must be valid
-    "password": "test123" // Required must be at least 6 characters
+  "email": "test@test.com", // Required must be valid
+  "password": "test123" // Required must be at least 6 characters
 }
 ```
 
@@ -61,8 +61,8 @@ Response:
 
 ```
 {
-	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpZCI6MTMsImlhdCI6MTY0Mzg0MDkwNiwiZXhwIjoxNjQzODQ0NTA2fQ.4yIPfu73NF5fO9b-QB8uDkXuRfomNlSJW9IaMdpkong", // JWT expires in 1 hour
-	"userId": 13
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpZCI6MTMsImlhdCI6MTY0Mzg0MDkwNiwiZXhwIjoxNjQzODQ0NTA2fQ.4yIPfu73NF5fO9b-QB8uDkXuRfomNlSJW9IaMdpkong", // JWT expires in 1 hour
+  "userId": 13
 }
 ```
 
@@ -78,17 +78,17 @@ Response:
 
 ```
 {
-	"message": "Todos found!",
-	"author": "John Doe",
-	"todos": [
-		{
-			"id": 5,
-			"title": "test",
-			"description": "test todo",
-			"deadline": "2022-02-03T09:00:00.000Z",
-			"priority": "Medium"
-		}
-	]
+  "message": "Todos found!",
+  "author": "John Doe",
+  "todos": [
+    {
+      "id": 5,
+      "title": "test",
+      "description": "test todo",
+      "deadline": "2022-02-03T09:00:00.000Z",
+      "priority": "Medium"
+    }
+  ]
 }
 ```
 
@@ -104,10 +104,10 @@ Request Body:
 
 ```
 {
-    "title": "test", // Required must be between 3 and 255 characters.
-    "description": "test todo", // Required must be at least 5 characters.
-    "deadline": "Thu Feb 03 2022 12:00:00 GMT+0300 (GMT+03:00)", // Required must be a valid date
-    "priority": "Medium" // Required must be between 3 and 255 characters.
+  "title": "test", // Required must be between 3 and 255 characters.
+  "description": "test todo", // Required must be at least 5 characters.
+  "deadline": "Thu Feb 03 2022 12:00:00 GMT+0300 (GMT+03:00)", // Required must be a valid date
+  "priority": "Medium" // Required must be between 3 and 255 characters.
 }
 ```
 
@@ -115,15 +115,15 @@ Response:
 
 ```
 {
-	"message": "Save successful!",
-	"author": "John Doe",
-	"todo": {
-		"id": 5,
-		"title": "test",
-		"description": "test todo",
-		"deadline": "2022-02-03T09:00:00.000Z",
-		"priority": "Medium"
-	}
+  "message": "Save successful!",
+  "author": "John Doe",
+  "todo": {
+    "id": 5,
+    "title": "test",
+    "description": "test todo",
+    "deadline": "2022-02-03T09:00:00.000Z",
+    "priority": "Medium"
+  }
 }
 ```
 
@@ -139,15 +139,15 @@ Response:
 
 ```
 {
-	"message": "Todo found!",
-	"author": "John Doe",
-	"todo": {
-		"id": 5,
-		"title": "test",
-		"description": "test todo",
-		"deadline": "2022-02-03T09:00:00.000Z",
-		"priority": "Medium"
-	}
+  "message": "Todo found!",
+  "author": "John Doe",
+  "todo": {
+    "id": 5,
+    "title": "test",
+    "description": "test todo",
+    "deadline": "2022-02-03T09:00:00.000Z",
+    "priority": "Medium"
+  }
 }
 ```
 
@@ -163,10 +163,10 @@ Request Body:
 
 ```
 {
-    "title": "Cleaning", // Optional
-    "description": "Clean house!", // Optional
-    "deadline": "Thu Feb 03 2022 15:39:00 GMT+0300 (GMT+03:00)", // Optional
-    "priority": "High" // Optional
+  "title": "Cleaning", // Optional
+  "description": "Clean house!", // Optional
+  "deadline": "Thu Feb 03 2022 15:39:00 GMT+0300 (GMT+03:00)", // Optional
+  "priority": "High" // Optional
 }
 ```
 
@@ -174,15 +174,15 @@ Response:
 
 ```
 {
-	"message": "Update successful!",
-	"author": "John Doe",
-	"todo": {
-		"id": 5,
-		"title": "Cleaning",
-		"description": "Clean house!",
-		"deadline": "2022-02-03T12:39:00.000Z",
-		"priority": "High"
-	}
+  "message": "Update successful!",
+  "author": "John Doe",
+  "todo": {
+    "id": 5,
+    "title": "Cleaning",
+    "description": "Clean house!",
+    "deadline": "2022-02-03T12:39:00.000Z",
+    "priority": "High"
+  }
 }
 ```
 
@@ -198,7 +198,7 @@ Response:
 
 ```
 {
-	"message": "Deleted!"
+  "message": "Deleted!"
 }
 ```
 
