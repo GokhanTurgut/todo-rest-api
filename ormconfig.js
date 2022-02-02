@@ -9,14 +9,16 @@ module.exports = {
   database: process.env.DATABASE_NAME,
   synchronize: false,
   logging: "all",
-  entities: ["src/entities/**/*.ts"],
-  migrations: ["src/migration/**/*.ts"],
-  subscribers: ["src/subscriber/**/*.ts"],
+  // Change below to run ts or dev scripts
+  entities: ["build/entities/**/*.js"],
+  migrations: ["build/migration/**/*.js"],
+  subscribers: ["build/subscriber/**/*.js"],
   cli: {
-    entitiesDir: "src/entities",
-    migrationsDir: "src/migration",
-    subscribersDir: "src/subscriber",
+    entitiesDir: "build/entities",
+    migrationsDir: "build/migration",
+    subscribersDir: "build/subscriber",
   },
+  // Only for SSL required connections
   ssl: {
     ca: fs.readFileSync(__dirname + "/ca-certificates.crt"),
     mode: "VERIFY_IDENTITY",

@@ -2,6 +2,7 @@ import "reflect-metadata";
 import express from "express";
 import { createConnection } from "typeorm";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config;
 
@@ -12,6 +13,7 @@ import authRoutes from "./routes/auth";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 app.use("/todo", todoRoutes);
