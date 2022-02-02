@@ -5,14 +5,14 @@ import authChecker from '../middleware/authChecker';
 
 const router = express.Router();
 
-router.get('/todos', authChecker, todoController.getTodos);
+router.get('/', authChecker, todoController.getTodos);
 
-router.get('/todo/:id', authChecker, todoController.getTodoById);
+router.get('/:id', authChecker, todoController.getTodoById);
 
-router.post('/todo', authChecker, todoController.postTodo);
+router.post('/', authChecker, todoController.postTodo);
 
-router.delete('/todo/:id', authChecker, todoController.deleteTodoById);
+router.delete('/:id', authChecker, todoController.deleteTodoById);
 
-router.put('/todo/:id', authChecker, todoController.updateTodoById);
+router.put('/:id', authChecker, todoController.updateTodoById);
 
 export default router;

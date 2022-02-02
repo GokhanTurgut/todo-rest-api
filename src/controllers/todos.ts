@@ -3,6 +3,7 @@ import { getRepository } from "typeorm";
 
 import { Todo } from "../entities/Todo";
 import { Author } from "../entities/Author";
+import { createTodoSchema, updateTodoSchema } from "../utils/validation";
 
 export const getTodos: RequestHandler = async (req, res) => {
   try {
@@ -59,11 +60,15 @@ export const postTodo: RequestHandler = async (req, res) => {
       res.status(401).json({ message: "Author does not found!" });
       return;
     }
+    const { error, value } = createTodoSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: "Validation error!", error });
+    }
     let todo = new Todo();
-    todo.title = req.body.title;
-    todo.description = req.body.description;
-    todo.deadline = req.body.deadline;
-    todo.priority = req.body.priority;
+    todo.title = value.title;
+    todo.description = value.description;
+    todo.deadline = value.deadline;
+    todo.priority = value.priority;
     todo.author = author;
     await todoRepo.save(todo);
     res.status(201).json({
@@ -96,17 +101,21 @@ export const updateTodoById: RequestHandler = async (req, res) => {
       res.status(401).json({ message: "Authors does not match!" });
       return;
     }
-    if (req.body.title) {
-      todo.title = req.body.title;
+    const { error, value } = updateTodoSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ message: "Validation error!", error });
     }
-    if (req.body.description) {
-      todo.description = req.body.description;
+    if (value.title) {
+      todo.title = value.title;
     }
-    if (req.body.deadline) {
-      todo.deadline = req.body.deadline;
+    if (value.description) {
+      todo.description = value.description;
     }
-    if (req.body.priority) {
-      todo.priority = req.body.priority;
+    if (value.deadline) {
+      todo.deadline = value.deadline;
+    }
+    if (value.priority) {
+      todo.priority = value.priority;
     }
     await todoRepo.save(todo);
     res.json({

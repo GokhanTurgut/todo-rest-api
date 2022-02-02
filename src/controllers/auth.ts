@@ -5,11 +5,12 @@ import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 
 import { Author } from "../entities/Author";
+import { signUpSchema, loginSchema } from "../utils/validation";
 
 dotenv.config();
 
 if (!process.env.PRIVATE_KEY) {
-  throw new Error('No private key for JWT found in environment variables!');
+  throw new Error("No private key for JWT found in environment variables!");
 }
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
@@ -17,7 +18,17 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 export const signUp: RequestHandler = async (req, res) => {
   try {
     const authorRepo = getRepository(Author);
-    const { email, firstName, lastName, password } = req.body;
+    const { error, value } = signUpSchema.validate(req.body);
+    if (error) {
+      return res
+        .status(400)
+        .json({ message: "Validation error!", error });
+    }
+    const { email, firstName, lastName, password } = value;
+    const sameEmail = await authorRepo.findOne({ email });
+    if (sameEmail) {
+      return res.status(400).json({ message: "Email already exists!" });
+    }
     const hashedPass = await bcrypt.hash(password, 10);
     let author = new Author();
     author.email = email;
@@ -28,12 +39,14 @@ export const signUp: RequestHandler = async (req, res) => {
     res.status(201).json({
       message: "Save successful!",
       user: {
+        id: author.id,
         email: author.email,
         firstName: author.firstName,
         lastName: author.lastName,
       },
     });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "Failed, error occurred!", error: err });
   }
 };
@@ -41,7 +54,13 @@ export const signUp: RequestHandler = async (req, res) => {
 export const login: RequestHandler = async (req, res) => {
   try {
     const authorRepo = getRepository(Author);
-    const { email, password } = req.body;
+    const { error, value } = loginSchema.validate(req.body);
+    if (error) {
+      return res
+        .status(400)
+        .json({ message: "Validation error!", error });
+    }
+    const { email, password } = value;
     const author = await authorRepo.findOne({ email });
     if (!author) {
       res.status(401).json({ message: "Email not found!" });

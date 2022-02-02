@@ -14,8 +14,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use(todoRoutes);
-app.use(authRoutes);
+app.use("/todo", todoRoutes);
+app.use("/auth", authRoutes);
 
 createConnection().then(() => {
   app.listen(PORT, () => {
